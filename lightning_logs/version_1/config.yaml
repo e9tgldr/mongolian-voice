@@ -1,0 +1,148 @@
+# lightning.pytorch==2.6.5
+seed_everything: 0
+trainer:
+  accelerator: auto
+  strategy: auto
+  devices: '1'
+  num_nodes: 1
+  precision: null
+  logger: null
+  callbacks:
+  - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+    init_args:
+      dirpath: null
+      filename: null
+      monitor: null
+      verbose: false
+      save_last: true
+      save_top_k: 1
+      save_on_exception: false
+      save_weights_only: false
+      mode: min
+      auto_insert_metric_name: true
+      every_n_train_steps: 600
+      train_time_interval: null
+      every_n_epochs: null
+      save_on_train_epoch_end: false
+      enable_version_counter: true
+  fast_dev_run: false
+  max_epochs: 10000
+  min_epochs: null
+  max_steps: -1
+  min_steps: null
+  max_time: null
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
+  overfit_batches: 0.0
+  val_check_interval: null
+  check_val_every_n_epoch: 2
+  num_sanity_val_steps: null
+  log_every_n_steps: null
+  enable_checkpointing: null
+  enable_progress_bar: false
+  enable_model_summary: null
+  accumulate_grad_batches: 1
+  gradient_clip_val: null
+  gradient_clip_algorithm: null
+  deterministic: null
+  benchmark: null
+  inference_mode: true
+  use_distributed_sampler: true
+  profiler: null
+  detect_anomaly: false
+  barebones: false
+  plugins: null
+  sync_batchnorm: false
+  reload_dataloaders_every_n_epochs: 0
+  default_root_dir: null
+  enable_autolog_hparams: true
+  model_registry: null
+model:
+  sample_rate: 16000
+  num_speakers: 1
+  resblock: '2'
+  resblock_kernel_sizes:
+  - 3
+  - 5
+  - 7
+  resblock_dilation_sizes:
+  - - 1
+    - 2
+  - - 2
+    - 6
+  - - 3
+    - 12
+  upsample_rates:
+  - 8
+  - 8
+  - 4
+  upsample_initial_channel: 256
+  upsample_kernel_sizes:
+  - 16
+  - 16
+  - 8
+  filter_length: 1024
+  hop_length: 256
+  win_length: 1024
+  mel_channels: 80
+  mel_fmin: 0.0
+  mel_fmax: 8000.0
+  inter_channels: 192
+  hidden_channels: 192
+  filter_channels: 768
+  n_heads: 2
+  n_layers: 6
+  kernel_size: 3
+  p_dropout: 0.1
+  n_layers_q: 3
+  use_spectral_norm: false
+  gin_channels: 0
+  use_sdp: true
+  segment_size: 8192
+  use_mrd: false
+  learning_rate: 0.0002
+  learning_rate_d: 0.0001
+  betas:
+  - 0.8
+  - 0.99
+  betas_d:
+  - 0.5
+  - 0.9
+  eps: 1.0e-09
+  lr_decay: 0.999875
+  lr_decay_d: 0.9999
+  init_lr_ratio: 1.0
+  warmup_epochs: 0
+  c_mel: 45
+  c_kl: 1.0
+  grad_clip: null
+  vocoder_warmstart_ckpt: null
+  warmstart_ckpt: null
+  mos_metric: utmos
+  dataset: null
+data:
+  csv_path: piper_data\metadata.csv
+  cache_dir: piper_data\cache
+  espeak_voice: en-us
+  config_path: piper_data\voice_config.json
+  voice_name: mn_voice
+  audio_dir: C:\Users\hi\Documents\chatterbox-finetuning\MyTTSDataset_combined\wavs
+  alignments_dir: null
+  num_symbols: 256
+  batch_size: 8
+  validation_split: 0.02
+  num_test_examples: 5
+  num_workers: 2
+  trim_silence: true
+  keep_seconds_before_silence: 0.25
+  keep_seconds_after_silence: 0.25
+  phoneme_type: text
+  dataset_type: text
+  phonemes_path: piper_data\phonemes.json
+  vowel_clusters: null
+optimizer: null
+lr_scheduler: null
+ckpt_path: null
+weights_only: null

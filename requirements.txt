@@ -1,0 +1,9 @@
+transformers==4.48.3
+accelerate>=1.2
+soundfile>=0.12
+scipy>=1.13
+numpy>=1.26
+fastapi>=0.115
+uvicorn>=0.32
+python-multipart>=0.0.9
+faster-whisper>=1.1
